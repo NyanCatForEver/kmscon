@@ -1,0 +1,32 @@
+---
+whiskers:
+  version: "^2.9.0"
+  matrix:
+    - flavor
+  filename: "themes/catppuccin-{{ flavor.identifier }}.conf"
+---
+{%- macro rgb(color) -%}
+{{ color.rgb.r }},{{ color.rgb.g }},{{ color.rgb.b }}
+{%- endmacro rgb -%}
+palette=custom
+
+palette-black={{ self::rgb(color=if(cond=flavor.dark, t=flavor.colors.surface1, f=flavor.colors.subtext1)) }}
+palette-red={{ self::rgb(color=flavor.colors.red) }}
+palette-green={{ self::rgb(color=flavor.colors.green) }}
+palette-yellow={{ self::rgb(color=flavor.colors.yellow) }}
+palette-blue={{ self::rgb(color=flavor.colors.blue) }}
+palette-magenta={{ self::rgb(color=flavor.colors.pink) }}
+palette-cyan={{ self::rgb(color=flavor.colors.teal) }}
+palette-light-grey={{ self::rgb(color=if(cond=flavor.dark, t=flavor.colors.subtext1, f=flavor.colors.surface2)) }}
+
+palette-dark-grey={{ self::rgb(color=if(cond=flavor.dark, t=flavor.colors.surface2, f=flavor.colors.subtext0)) }}
+palette-light-red={{ self::rgb(color=flavor.colors.red) }}
+palette-light-green={{ self::rgb(color=flavor.colors.green) }}
+palette-light-yellow={{ self::rgb(color=flavor.colors.yellow) }}
+palette-light-blue={{ self::rgb(color=flavor.colors.blue) }}
+palette-light-magenta={{ self::rgb(color=flavor.colors.pink) }}
+palette-light-cyan={{ self::rgb(color=flavor.colors.teal) }}
+palette-white={{ self::rgb(color=if(cond=flavor.dark, t=flavor.colors.subtext0, f=flavor.colors.surface1)) }}
+
+palette-foreground={{ self::rgb(color=flavor.colors.text) }}
+palette-background={{ self::rgb(color=flavor.colors.base) }}
